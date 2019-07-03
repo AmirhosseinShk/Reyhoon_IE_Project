@@ -1,26 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Resturants from './resturants.js';
+import Main from './main.js';
+import { BrowserRouter , Route  } from "react-router-dom";
+
+import $ from 'jquery';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter  >
+    <Route path="/SearchResult" component={Resturants}></Route>
+    <Route path="/" component={Main}></Route>
+    </BrowserRouter  >
+    );
 }
 
 export default App;

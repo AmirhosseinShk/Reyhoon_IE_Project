@@ -1,0 +1,27 @@
+@import url("fontiran.css"); 
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+html , body{
+    max-width: 100%;
+    overflow-x: hidden;
+	direction : rtl;
+	font-family: IRANSans;
+	font-weight:200;
+	text-align: right;
+}
+
+
+a{
+	color: black;
+}
+
+.deleteUnderLink{
+	text-decoration: none !important;
+}
+
+.tab{
+	margin-right : 5vw;
+}
+
+.doubletab{
+	margin-right : 10vw;
+}
