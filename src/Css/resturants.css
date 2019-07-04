@@ -4,7 +4,6 @@
 
 .topImage{
     position: relative;
-    margin-top: 3.2%;
     width: 100%;
     height: 22%;
 }
@@ -61,8 +60,14 @@ hr.style1 {
     margin-top:2%;
 }
 
+.searchPanel{
+    margin-top : 2%;
+    background-color: rgb(248, 248, 248);
+}
+
 .filtering{
-    left:10%;
+    height: 100%;
+    right:2%;
     padding: 0;
 }
 
@@ -80,15 +85,19 @@ hr.style2 {
     margin-bottom:0;
 }
 
+.searchFilter{
+    padding: 0.5rem 0.75rem;
+}
+
 .resizeSerachFood{
+    padding: 0;
+    text-align: right;
     position: relative;
     font-family: FontAwesome , IranSans;
-    font-size: 15px;
+    font-size: 9px;
     background-color: rgb(248, 248, 248);
 	color: gray;
-    width: 94%;
-    margin: auto;
-    bottom: 8%;
+    top:3%;
 }
 
 .cBox{
@@ -111,8 +120,95 @@ hr.style2 {
 .cBoxText{
     width:80%;
     margin-right:5%;
+    cursor: pointer;
+}
+
+.foodSearch{
+    padding-top: 4%;
+    height: 20%;
+    padding-bottom: 4%;
+}
+
+.cButtonDiv{
+    cursor: pointer;
+    top:50%;
 }
 
 .cButtonDiv:hover{
     background-color: #ddd;
+}
+
+.more{
+    width:100%;
+}
+
+.resizebutton{
+    width: 100%;
+}
+
+.lastButton{
+    padding: 0;
+}
+
+.changeDisplay{
+    display: inline-flex;
+}
+
+.changeDisplay:hover{
+    background: rgb(203,203,203);
+}
+
+.topMargin{
+    margin-top:4%;
+}
+
+.restImgresize{
+    padding: 0;
+}
+
+.restImgsize{
+    width: 100%;
+    height: 75%;
+}
+
+.catFont{
+    font-size: 14px;
+    margin: 0;
+    font-weight: normal;}
+
+.addFont{
+    font-size: 12px;
+}
+
+.textAligen{
+    text-align: right;
+}
+
+.addMargin{
+    margin-top: 10%;
+}
+
+.fixDispley{
+    display: inline-flex;
+}
+
+.react-rater-star.is-active{
+    color:rgb(255,195,0); 
+}
+
+.rateSize{
+    font-size:85%;
+    color:rgb(255,195,0); 
+    font-weight: bold;
+}
+
+.sefareshRounded{
+    border-radius: 25rem;
+}
+
+.addShadow:hover{
+	-moz-box-shadow: 1px 2px 4px rgba(0, 0, 0,0.5);
+	-webkit-box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
 }

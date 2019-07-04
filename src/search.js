@@ -2,41 +2,41 @@ import React from 'react';
 import './Css/global.css';
 import './Css/main.css';
 import pizza from './Css/assets/Pizza.jpg';
-import { BrowserRouter as Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function search() {
     return (
         <div>
-        <img src= {pizza} class="mainImage" />
-        <div class="TitleInCenter">
+        <img src= {pizza} className="mainImage" />
+        <div className="TitleInCenter">
             سفارش آنلاین غذا از بهترین رستوران ها و فست فودها
         </div>
 
-        <div class="BelowInCenter">
+        <div className="BelowInCenter">
             برای دیدن لیست رستوران ها و فست فودهایی که به شما سرویس می دهند، منظقه خود را وارد کنید.
         </div>
 
-        <div class="searchBorder">
-            <i class="down"></i>
-            <select id="" class="SelectButton" name="CityBox" >
+        <div className="searchBorder">
+            <i className="down"></i>
+            <select id="" className="SelectButton" name="CityBox" >
                 <option Value="Tehran">تهران</option>
                 <option Value="Mashhad">مشهد</option>
                 <option Value="Esfehan">اصفهان</option>
             </select>
-            <input type="text" id="zoneArea" class="SelectZone" placeholder="&#xF041; مثلا نیاوران"></input>
-            <button class="SearchButton" type="submit">
+            <input type="text" id="zoneArea" className="SelectZone" placeholder="&#xF041; مثلا نیاوران"></input>
+            <button className="SearchButton" type="submit">
                 <Link to="/SearchResult">
-                    <i id="SearchIcon" class="fa fa-search"></i>
+                    <i id="SearchIcon" className="fa fa-search"></i>
                 </Link>
             </button>
-            <span class="TextOnBorder">منطقه خود را وارد کنید</span>
+            <span className="TextOnBorder">منطقه خود را وارد کنید</span>
         </div>
 
-        <div class="HistoryDiv">
+        <div className="HistoryDiv">
             <a href="">
-                <i class="fa fa-history">
+                <i className="fa fa-history">
                 </i>
-                <span class="lastSerach">
+                <span className="lastSerach">
                     آخرین جستجو: تهران ، شیخ هادی ، چهارراه ولیعصر
                 </span>
             </a>

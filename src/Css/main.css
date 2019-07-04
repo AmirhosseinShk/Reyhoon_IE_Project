@@ -1,7 +1,5 @@
 .header{
 	overflow: hidden;
-	position:fixed;
-	z-index:100;
 	width:100%;
 	margin-top:0.5%;
 }
@@ -11,7 +9,7 @@
 }
 
 .svgReyhoon{
-	position:absolute;
+	position: relative;;
 	width:6%;
 	right:80%;
 	bottom : 35%;
@@ -20,7 +18,7 @@
 
 .hr1 { 
 	position:relative;
-	margin-left:5vw;	
+	margin:0;
     background-image: linear-gradient(90deg, red, DarkOrchid );    
     border: 0;
     height: 2px;
@@ -161,6 +159,14 @@ input.empty {
 	background-color: #201d1e;
 }
 
+.forMain{
+	margin-top:5%;
+	position: absolute;;
+	background-color: #201d1e;
+	top:77%;
+	width: 100%;
+}
+
 .shiftToLeft{
 	margin-top:2%;
 	left:5%;
@@ -241,7 +247,6 @@ input.empty {
 .topImg{
 	width: 73%;
 	height:30%;
-	right:7.5%;
 	top:15%;
 	margin-bottom:5%;
 	position:relative;
