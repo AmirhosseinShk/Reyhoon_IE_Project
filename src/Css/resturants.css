@@ -5,7 +5,7 @@
 .topImage{
     position: relative;
     width: 100%;
-    height: 22%;
+    height: 300px;
 }
 
 .restNum{
@@ -169,12 +169,15 @@ hr.style2 {
 .restImgsize{
     width: 100%;
     height: 75%;
+	border: 1px solid lightgray;
+	border-radius:5%;
 }
 
 .catFont{
     font-size: 14px;
     margin: 0;
-    font-weight: normal;}
+    font-weight: normal;
+}
 
 .addFont{
     font-size: 12px;
@@ -204,6 +207,12 @@ hr.style2 {
 
 .sefareshRounded{
     border-radius: 25rem;
+    color: red;
+}
+
+.sefareshRounded:hover{
+    text-decoration: none;
+    color: white;
 }
 
 .addShadow:hover{
@@ -212,3 +221,43 @@ hr.style2 {
     box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.5);
     cursor: pointer;
 }
+
+.CloseResturant{
+    padding-top : 10%;
+    padding-bottom: 5%;
+    font-weight: bold;
+}
+
+.addRowMargin{
+    margin-bottom: 5%;
+}
+
+.addShadowClose{
+    background-color : rgb(240,240,240)
+}
+
+.addShadowClose:hover{
+    -moz-box-shadow: 1px 2px 4px rgba(0, 0, 0,0.1);
+	-webkit-box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.offsetRight{
+    margin-right:18%;
+}
+
+.topImageOrder{
+    position: absolute;
+    width: 100%;
+    height: 300px;
+}
+
+.marginTop{
+    margin-top: 10%;
+}
+
+.addMarginTop{
+    margin-top:4%;
+}
+
