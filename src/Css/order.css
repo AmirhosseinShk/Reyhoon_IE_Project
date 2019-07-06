@@ -97,3 +97,112 @@ html , body{
     border-color: rgb(204, 50, 50);
     box-shadow: 0 0 0 0 ;
 }
+
+.refont{
+    font-size : 10px;
+    color : Crimson
+}
+
+.hrrewidth{
+    width: 80%;
+    float: right;
+    margin-left: 20%;
+}
+
+.addressBold{
+    font-family: FontAwesome , IranSans;
+    font-weight: bolder;
+    margin-top : 15px;
+    color: gray;
+}
+
+.SaatSefaresh{
+    font-family: FontAwesome , IranSans;
+    font-weight: normal;
+    color: black;
+    margin-top : 30px;
+}
+
+.resizeTime{
+    width: 35%;
+}
+
+.hrrewidth2{
+    width: 36%;
+    float: right;
+    margin-left: 64%;
+}
+
+.starDiv{
+    text-align: center;
+    width: 80%;
+}
+
+.commenthr{
+    width: 60%;
+    margin-right: 12%;
+    margin-left : 28%;
+}
+
+.barStatus{
+    direction: ltr;
+}
+
+.removepad{
+    padding: 0;
+}
+
+.rateStatus{
+    font-size:120%;
+    color:rgb(255,195,0); 
+    font-weight: bold;
+    bottom: 3px;
+}
+
+.barnameStatus{
+    width: 33%;
+    text-align: left;
+}
+
+.delMarginR{
+    margin-right: 0;
+}
+
+.rateSize{
+    font-size : 140%;
+    font-weight: bold;
+    display: inline-flex;
+}
+
+.rateStarDirection{
+    direction: ltr;
+    margin-right: 5px;
+}
+
+.rateSize2{
+    font-size : 120%;
+    font-weight: bold;
+    display: inline-flex;
+}
+
+.commentContent{
+    margin-top: 18px;
+}
+
+.timeCustom{
+    margin-top: 18px;
+    font-weight: 100;
+    color: gray;
+}
+
+.quote{
+    font-family: FontAwesome , IranSans;
+    color : rgb(172, 7, 70);
+    margin-left: 15px;
+}
+
+.addWiteBorder{
+    border: 1px solid white;
+    background-color: white ;
+    z-index: 1;
+}

@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'react-rater/lib/react-rater.css'
-import './Css/global.css';
 import './Css/resturants.css';
 import Header from './header.js';
 import Footer from './footer.js';
@@ -9,6 +8,10 @@ import topImage from './Css/assets/topImage.jpg';
 import axios from 'axios';
 import Rater from 'react-rater';
 import { Link } from "react-router-dom";
+import './Css/global.css';
+
+document.body.style.minHeight = "100%";
+document.body.style.height = "auto";
 
 class resturants extends React.Component {
     constructor(props) {
@@ -16,7 +19,7 @@ class resturants extends React.Component {
         const { area } = props.location.state;
         this.state = {
             allResturant: [],
-            selectedResturant: [],
+            selectedResturantName: "",
             areaZone: area,
             restCount: 0,
             filterListSelected: [],
@@ -38,15 +41,17 @@ class resturants extends React.Component {
         var name = event.target.id;
         console.log(name);
         var selectedRestDetails;
-        for (var c = 0; c < this.state.allResturant.length ; c++) {
+        for (var c = 0; c < this.state.allResturant.length; c++) {
             if (this.state.allResturant[c].name == name) {
                 selectedRestDetails = (this.state.allResturant[c]);
                 break;
             }
         }
+
         this.setState({
-            selectedResturant: selectedRestDetails
+            selectedResturantName: selectedRestDetails.englishName
         });
+        console.log(this.state.selectedResturantName);
     }
 
     handleChangeresturant(event) {
@@ -80,38 +85,6 @@ class resturants extends React.Component {
     }
 
     handleChangeCBox(event) {
-        // console.log(event);
-        // var nameC = event.target.id;
-        // var check = event.target.checked;
-        // var fItemFil = new Array();
-        // var fcheckState = this.state.filterItemCheckedState;
-        // var fItemOrginal = this.state.filterItems;
-        // for (var i = 0; i < fItemOrginal.length; i++) {
-        //     if (!fcheckState[fItemOrginal.indexOf(this.state.filterItemFiltered[i])]) {
-        //         if (check) {
-        //             fItemFil.push(fItemOrginal[fItemOrginal.indexOf(nameC)]);
-        //             fcheckState[fItemOrginal.indexOf(this.state.filterItemFiltered[i])] = check;
-        //             check = false;
-        //             break;
-        //         }
-        //         fcheckState[fItemOrginal.indexOf(this.state.filterItemFiltered[i])] = check;
-        //     } else {
-        //         if (check || this.state.filterItemFiltered[i] != nameC) {
-        //             fItemFil.push(this.state.filterItemFiltered[i]);
-        //         }
-        //     }
-        // }
-
-        // for (var i = 0; i < fItemOrginal.length; i++) {
-        //     if (!fItemFil.includes(fItemOrginal[i])) {
-        //         fItemFil.push(fItemOrginal[i]);
-        //     }
-        // }
-
-        // this.setState({
-        //     filterItemFiltered: fItemFil,
-        //     filterItemCheckedState: fcheckState
-        // });
         var filter = event.target.id;
         var check = event.target.checked;
         var filterListSelected = this.state.filterListSelected;
@@ -129,38 +102,77 @@ class resturants extends React.Component {
             filterListSelected.splice(index, 1);
         }
 
-        var fItemFil = new Array();
-        var fItemFilClose = new Array();
-
-        for (var i = 0; i < this.state.resturantsItems.length; i++) {
-            var isOk = true;
-            for (var j = 0; j < filterListSelected.length; j++) {
-                if (!this.state.resturantsItems[i].categories.includes(filterListSelected[j])) {
-                    isOk = false;
-                }
-            }
-            if (isOk) {
-                fItemFil.push(this.state.resturantsItems[i]);
-            }
+        var QueryPart = "";
+        for (var i = 0; i < filterListSelected.length; i++) {
+            QueryPart += "&category=" + filterListSelected[i];
         }
 
-        for (var i = 0; i < this.state.resturantsItemsClose.length; i++) {
-            var isOk = true;
-            for (var j = 0; j < filterListSelected.length; j++) {
-                if (!this.state.resturantsItemsClose[i].categories.includes(filterListSelected[j])) {
-                    isOk = false;
-                }
-            }
-            if (isOk) {
-                fItemFilClose.push(this.state.resturantsItemsClose[i]);
-            }
-        }
 
-        this.setState({
-            filterresturantsItems: fItemFil,
-            filterresturantsItemsClose: fItemFilClose,
-            filterListSelected: filterListSelected
-        });
+        var urlDb = "http://localhost:8084/api/restaurants?area=" + this.state.areaZone + QueryPart;
+        console.log(urlDb);
+        axios(urlDb)
+            .then(
+                (result) => {
+                    var countResturants = result.data.length;
+                    var hours = new Date().getHours();
+                    var restDetails = new Array();
+                    var restDetailsClose = new Array();
+                    for (var i = 0; i < countResturants; i++) {
+                        const restObject = {}; // For Resive Resturant Details
+                        Object.defineProperty(restObject, 'restName', {
+                            writable: true
+                        });
+                        Object.defineProperty(restObject, 'restAddress', {
+                            writable: true
+                        });
+                        Object.defineProperty(restObject, 'imgurl', {
+                            writable: true
+                        });
+                        Object.defineProperty(restObject, 'category', {
+                            writable: true
+                        });
+                        Object.defineProperty(restObject, 'categories', {
+                            writable: true
+                        });
+                        Object.defineProperty(restObject, 'rate', {
+                            writable: true
+                        });
+
+                        var catItems = new Array();
+                        var restcategories = result.data[i].categories;
+                        var catlenth = restcategories.length;
+
+                        for (var j = 0; j < catlenth; j++) {
+                            catItems.push(restcategories[j].name);
+                        }
+
+                        restObject.categories = catItems;
+                        catItems = catItems.join(' . ');
+                        result.data[i].catItems = catItems;
+                        restObject.restName = result.data[i].name;
+                        restObject.restAddress = result.data[i].address.addressLine;
+                        restObject.imgurl = result.data[i].logo;
+                        restObject.category = catItems;
+                        restObject.rate = Math.round(result.data[i].averageRate);
+                        if (hours >= result.data[i].openingTime && hours < result.data[i].closingTime) {
+                            restDetails.push(restObject);
+                        } else {
+                            restDetailsClose.push(restObject);
+                        }
+                    }
+                    this.setState({
+                        filterresturantsItemsClose: restDetailsClose,
+                        filterresturantsItems: restDetails,
+                    });
+                    this.setState({
+                        filterresturantsItemsClose: restDetailsClose,
+                        filterresturantsItems: restDetails,
+                    });
+                },
+                (error) => {
+                    console.log(error);
+                }
+            )
 
     }
 
@@ -239,7 +251,6 @@ class resturants extends React.Component {
                         restObject.imgurl = result.data[i].logo;
                         restObject.category = catItems;
                         restObject.rate = Math.round(result.data[i].averageRate);
-                        console.log(hours);
                         if (hours >= result.data[i].openingTime && hours < result.data[i].closingTime) {
                             restDetails.push(restObject);
                         } else {
@@ -320,7 +331,7 @@ class resturants extends React.Component {
                                                         </div>
                                                     </div>
                                                     <button id={item.restName} onMouseEnter={this.handleGoResturantPage} className="btn btn-outline-danger sefareshRounded addMargin">
-                                                        <Link id={item.restName} class="sefareshRounded" to={{ pathname: '/order', state: { resturantDetails: this.state.selectedResturant } }} >
+                                                        <Link id={item.restName} class="sefareshRounded" to={{ pathname: '/order', state: { restName: this.state.selectedResturantName } }} >
                                                             شروع سفارش
                                                         </Link>
                                                     </button>
@@ -351,8 +362,8 @@ class resturants extends React.Component {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <button id={item.restName} onClick={this.handleGoResturantPage} className="btn btn-outline-danger sefareshRounded addMargin">
-                                                        <Link class="sefareshRounded" to={{ pathname: '/order', state: { area: this.state.selectedResturant } }} >
+                                                    <button id={item.restName} onMouseEnter={this.handleGoResturantPage} className="btn btn-outline-danger sefareshRounded addMargin">
+                                                        <Link id={item.restName} class="sefareshRounded" to={{ pathname: '/order', state: { restName: this.state.selectedResturantName } }} >
                                                             شروع سفارش
                                                         </Link>
                                                     </button>

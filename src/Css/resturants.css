@@ -206,6 +206,7 @@ hr.style2 {
 }
 
 .sefareshRounded{
+    font-family: FontAwesome , IranSans;
     border-radius: 25rem;
     color: red;
 }
